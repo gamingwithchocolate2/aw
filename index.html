@@ -3,31 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Introductory Psychology Quiz</title>
+    <title>PsychEval - Professional Assessment Platform</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-primary: #0f172a;
-            --bg-secondary: #1e293b;
-            --accent: #38bdf8;
-            --text-main: #f1f5f9;
+            --bg-main: #0b0f19;
+            --bg-surface: #131a26;
+            --bg-surface-elevated: #1c2636;
+            --primary: #38bdf8;
+            --primary-hover: #0ea5e9;
+            --text-main: #f8fafc;
             --text-muted: #94a3b8;
-            --border: #334155;
-            --correct: #4ade80;
+            --border: #223147;
+            --success: #10b981;
+            --error: #ef4444;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
         }
 
         body {
-            background-color: var(--bg-primary);
+            background-color: var(--bg-main);
             color: var(--text-main);
-            padding: 2rem 1rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Utility Classes for View Management */
+        .hidden {
+            display: none !important;
+        }
+
+        /* Top Navigation Bar */
+        nav {
+            background-color: var(--bg-surface);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--primary);
+            letter-spacing: -0.025em;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .user-badge {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            background-color: var(--bg-main);
+            padding: 0.35rem 0.75rem;
+            border-radius: 9999px;
+            border: 1px solid var(--border);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.875rem;
+            transition: all 0.2s ease;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--bg-surface-elevated);
+            border-color: var(--text-muted);
+        }
+
+        /* Main Portal Containment */
+        .wrapper {
+            flex: 1;
             display: flex;
             justify-content: center;
+            align-items: center;
+            padding: 2rem 1rem;
         }
 
         .container {
@@ -35,51 +104,146 @@
             width: 100%;
         }
 
-        header {
-            text-align: center;
-            margin-bottom: 2.5rem;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 1.5rem;
+        /* Elegant Auth Cards */
+        .auth-card {
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2.5rem;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
         }
 
-        h1 {
-            color: var(--accent);
+        .auth-card h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .auth-card p {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--text-muted);
+        }
+
+        .form-control {
+            width: 100%;
+            background-color: var(--bg-main);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 0.75rem;
+            color: var(--text-main);
+            font-size: 0.95rem;
+            transition: border-color 0.2s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .btn-primary {
+            width: 100%;
+            background-color: var(--primary);
+            color: var(--bg-main);
+            border: none;
+            padding: 0.75rem;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .auth-switch {
+            text-align: center;
+            margin-top: 1.25rem;
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        .auth-switch span {
+            color: var(--primary);
+            cursor: pointer;
+        }
+
+        .auth-switch span:hover {
+            text-decoration: underline;
+        }
+
+        .error-msg {
+            color: var(--error);
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+            display: none;
+        }
+
+        /* Dashboard Layout */
+        header {
+            margin-bottom: 2.5rem;
+        }
+
+        header h1 {
             font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
             margin-bottom: 0.5rem;
         }
 
-        .subtitle {
+        header p {
             color: var(--text-muted);
-            font-size: 1rem;
         }
 
         .section-title {
-            color: var(--accent);
-            font-size: 1.15rem;
-            margin: 2.5rem 0 1.25rem 0;
-            padding-bottom: 0.25rem;
-            border-bottom: 2px solid var(--border);
+            color: var(--primary);
+            font-size: 0.875rem;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.05em;
+            margin: 3rem 0 1.25rem 0;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
         }
 
+        /* Content Quiz Cards */
         .quiz-card {
-            background-color: var(--bg-secondary);
+            background-color: var(--bg-surface);
             border: 1px solid var(--border);
             border-radius: 8px;
-            padding: 1.5rem;
+            padding: 1.75rem;
             margin-bottom: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
 
         .q-header {
+            font-size: 0.875rem;
             font-weight: 600;
+            color: var(--primary);
             margin-bottom: 0.75rem;
-            color: var(--accent);
         }
 
         .q-text {
             line-height: 1.6;
             margin-bottom: 1.5rem;
+            font-size: 1rem;
         }
 
         .input-space {
@@ -90,275 +254,512 @@
 
         textarea {
             width: 100%;
-            background-color: var(--bg-primary);
+            background-color: var(--bg-main);
             border: 1px solid var(--border);
             border-radius: 6px;
-            padding: 0.75rem;
+            padding: 0.85rem;
             color: var(--text-main);
             font-size: 0.95rem;
             resize: vertical;
-            min-height: 70px;
+            min-height: 80px;
             transition: border-color 0.2s ease;
         }
 
         textarea:focus {
             outline: none;
-            border-color: var(--accent);
+            border-color: var(--primary);
         }
 
-        .submit-btn {
-            background-color: var(--accent);
-            color: var(--bg-primary);
-            border: none;
-            padding: 0.6rem 1.2rem;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: 600;
-            width: max-content;
-            align-self: flex-end;
-            transition: opacity 0.2s ease;
-        }
-
-        .submit-btn:hover {
-            opacity: 0.9;
+        .card-actions {
+            display: flex;
+            justify-content: flex-end;
         }
 
         .feedback-box {
             display: none;
-            background-color: rgba(74, 222, 128, 0.05);
-            border-left: 3px solid var(--correct);
+            background-color: rgba(16, 185, 129, 0.04);
+            border-left: 3px solid var(--success);
             padding: 1.25rem;
             border-radius: 0 6px 6px 0;
             margin-top: 1rem;
         }
 
         .feedback-box p {
-            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
             line-height: 1.5;
         }
 
-        .feedback-box p:last-child {
-            margin-bottom: 0;
+        .label {
+            font-weight: 600;
+            color: var(--success);
         }
 
-        .label {
-            font-weight: bold;
-            color: var(--correct);
+        /* Metrics / Admin Board Framework */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .metric-card {
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .metric-title {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-value {
+            font-size: 1.75rem;
+            font-weight: 700;
+        }
+
+        .admin-table-wrapper {
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.925rem;
+        }
+
+        th {
+            background-color: var(--bg-surface-elevated);
+            padding: 1rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            border-bottom: 1px solid var(--border);
+        }
+
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-main);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <header>
-        <h1>Introductory Psychology Quiz</h1>
-        <p class="subtitle">Basic Concept Review & Foundations of Mental Health</p>
-    </header>
-
-    <div class="section-title">Part 1: Common Mental Health Conditions</div>
-
-    <div class="quiz-card">
-        <div class="q-header">Question 1</div>
-        <p class="q-text">A person experiences a persistent low mood, loss of interest in activities they used to enjoy, constant tiredness, and changes in sleep patterns lasting for several weeks. What common mental health condition best describes this?</p>
-        <div class="input-space">
-            <textarea placeholder="Type your answer here..."></textarea>
-            <button class="submit-btn" onclick="lockAnswer(this)">Lock In Answer</button>
-            <div class="feedback-box">
-                <p><span class="label">Expected Answer:</span> Depression (Major Depressive Disorder).</p>
-            </div>
+    <nav id="global-nav" class="hidden">
+        <div class="brand">PsychEval Portal</div>
+        <div class="nav-actions">
+            <div id="role-badge" class="user-badge">User</div>
+            <button id="admin-panel-btn" class="btn-outline hidden" onclick="switchView('admin')">Admin Panel</button>
+            <button id="portal-btn" class="btn-outline hidden" onclick="switchView('portal')">Back to Test</button>
+            <button class="btn-outline" onclick="logout()">Sign Out</button>
         </div>
-    </div>
+    </nav>
 
-    <div class="quiz-card">
-        <div class="q-header">Question 2</div>
-        <p class="q-text">Someone experiences sudden, unexpected bursts of extreme fear accompanied by a pounding heart, sweating, and shortness of breath that peak within minutes. What are these episodes called?</p>
-        <div class="input-space">
-            <textarea placeholder="Type your answer here..."></textarea>
-            <button class="submit-btn" onclick="lockAnswer(this)">Lock In Answer</button>
-            <div class="feedback-box">
-                <p><span class="label">Expected Answer:</span> Panic Attacks (Panic Disorder).</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="quiz-card">
-        <div class="q-header">Question 3</div>
-        <p class="q-text">A person experiences extreme mood swings that cycle between periods of high energy, talking very fast, and grand plans (mania), followed by periods of deep sadness and low motivation. What condition involves these severe shifts?</p>
-        <div class="input-space">
-            <textarea placeholder="Type your answer here..."></textarea>
-            <button class="submit-btn" onclick="lockAnswer(this)">Lock In Answer</button>
-            <div class="feedback-box">
-                <p><span class="label">Expected Answer:</span> Bipolar Disorder.</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="quiz-card">
-        <div class="q-header">Question 4</div>
-        <p class="q-text">An individual feels intense, overwhelming nervousness and self-consciousness when meeting new people or speaking in public because they are terrified of being judged or embarrassed. What specific anxiety presentation is this?</p>
-        <div class="input-space">
-            <textarea placeholder="Type your answer here..."></textarea>
-            <button class="submit-btn" onclick="lockAnswer(this)">Lock In Answer</button>
-            <div class="feedback-box">
-                <p><span class="label">Expected Answer:</span> Social Anxiety (Social Phobia).</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="quiz-card">
-        <div class="q-header">Question 5</div>
-        <p class="q-text">After experiencing a highly stressful, scary, or dangerous life event, a person struggles with frequent nightmares about the event, feels constantly on edge, and avoids anything that reminds them of it. What condition does this look like?</p>
-        <div class="input-space">
-            <textarea placeholder="Type your answer here..."></textarea>
-            <button class="submit-btn" onclick="lockAnswer(this)">Lock In Answer</button>
-            <div class="feedback-box">
-                <p><span class="label">Expected Answer:</span> Post-Traumatic Stress Disorder (PTSD).</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="quiz-card">
-        <div class="q-header">Question 6</div>
-        <p class="q-text">A person experiences recurring, unwanted thoughts (like fear of germs) and feels driven to perform repetitive behaviors or routines over and over (like washing hands twenty times) to make the anxiety go away. What is this called?</p>
-        <div class="input-space">
-            <textarea placeholder="Type your answer here..."></textarea>
-            <button class="submit-btn" onclick="lockAnswer(this)">Lock In Answer</button>
-            <div class="feedback-box">
-                <p><span class="label">Expected Answer:</span> Obsessive-Compulsive Disorder (OCD).</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="quiz-card">
-        <div class="q-header">Question 7</div>
-        <p class="q-text">A person is constantly worried about everyday things like their health, work, or chores, even when there is no clear reason to worry. The anxiety lasts for months and makes it hard to relax. What condition is this?</p>
-        <div class="input-space">
-            <textarea placeholder="Type your answer here..."></textarea>
-            <button class="submit-btn" onclick="lockAnswer(this)">Lock In Answer</button>
-            <div class="feedback-box">
-                <p><span class="label">Expected Answer:</span> Generalized Anxiety Disorder (GAD).</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="section-title">Part 2: Basic Professional & Communication Skills</div>
-
-    <div class="quiz-card">
-        <div class="q-header">Question 8</div>
-        <p class="q-text">When a helper listens carefully to someone without interrupting, pays attention to their feelings, and states back what they heard to show they understand, what basic communication skill are they using?</p>
-        <div class="input-space">
-            <textarea placeholder="Type your answer here..."></textarea>
-            <button class="submit-btn" onclick="lockAnswer(this)">Lock In Answer</button>
-            <div class="feedback-box">
-                <p><span class="label">Expected Answer:</span> Active Listening.</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="quiz-card">
-        <div class="q-header">Question 9</div>
-        <p class="q-text">If a professional rules that they will not share or talk about a client's private stories with outside individuals or friends, what fundamental ethical concept are they following?</p>
-        <div class="input-space">
-            <textarea placeholder="Type your answer here..."></textarea>
-            <button class="submit-btn" onclick="lockAnswer(this)">Lock In Answer</button>
-            <div class="feedback-box">
-                <p><span class="label">Expected Answer:</span> Confidentiality.</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="quiz-card">
-        <div class="q-header">Question 10</div>
-        <p class="q-text">What is the professional term for setting clear, healthy limits on relationship topics, personal talk, and meeting times to keep the helper-client relationship safe and focused?</p>
-        <div class="input-space">
-            <textarea placeholder="Type your answer here..."></textarea>
-            <button class="submit-btn" onclick="lockAnswer(this)">Lock In Answer</button>
-            <div class="feedback-box">
-                <p><span class="label">Expected Answer:</span> Professional Boundaries.</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="section-title">Part 3: Basic Approaches to Change</div>
-
-    <div class="quiz-card">
-        <div class="q-header">Question 11</div>
-        <p class="q-text">Which popular style of talking therapy focuses directly on helping people notice how their negative thoughts influence their feelings and actions, teaching them to swap unhelpful thoughts for balanced ones?</p>
-        <div class="input-space">
-            <textarea placeholder="Type your answer here..."></textarea>
-            <button class="submit-btn" onclick="lockAnswer(this)">Lock In Answer</button>
-            <div class="feedback-box">
-                <p><span class="label">Expected Answer:</span> Cognitive Behavioral Therapy (CBT).</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="quiz-card">
-        <div class="q-header">Question 12</div>
-        <p class="q-text">When someone works through a fear (like a fear of heights) by slowly and safely facing it step-by-step under calm conditions until it no longer scares them, what basic behavioral technique is being used?</p>
-        <div class="input-space">
-            <textarea placeholder="Type your answer here..."></textarea>
-            <button class="submit-btn" onclick="lockAnswer(this)">Lock In Answer</button>
-            <div class="feedback-box">
-                <p><span class="label">Expected Answer:</span> Exposure Therapy (or Desensitization).</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="quiz-card">
-        <div class="q-header">Question 13</div>
-        <p class="q-text">What is the term for actions, habits, or strategies (such as deep breathing, journaling, or regular exercise) that a person uses to manage stress and keep themselves feeling healthy?</p>
-        <div class="input-space">
-            <textarea placeholder="Type your answer here..."></textarea>
-            <button class="submit-btn" onclick="lockAnswer(this)">Lock In Answer</button>
-            <div class="feedback-box">
-                <p><span class="label">Expected Answer:</span> Coping Mechanisms (or Self-Care Strategies).</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="quiz-card">
-        <div class="q-header">Question 14</div>
-        <p class="q-text">What is the basic psychological term for an automatic defense action where a person pushes a highly uncomfortable or stressful memory entirely out of their conscious awareness so they don't have to face it?</p>
-        <div class="input-space">
-            <textarea placeholder="Type your answer here..."></textarea>
-            <button class="submit-btn" onclick="lockAnswer(this)">Lock In Answer</button>
-            <div class="feedback-box">
-                <p><span class="label">Expected Answer:</span> Repression.</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="quiz-card">
-        <div class="q-header">Question 15</div>
-        <p class="q-text">What classic term describes the strong sense of trust, mutual respect, and collaborative connection built between a helper and a client that allows them to work well together?</p>
-        <div class="input-space">
-            <textarea placeholder="Type your answer here..."></textarea>
-            <button class="submit-btn" onclick="lockAnswer(this)">Lock In Answer</button>
-            <div class="feedback-box">
-                <p><span class="label">Expected Answer:</span> Therapeutic Alliance (or Rapport).</p>
-            </div>
-        </div>
-    </div>
-
-</div>
-
-<script>
-    function lockAnswer(btn) {
-        const parent = btn.parentElement;
-        const txtArea = parent.querySelector('textarea');
-        const feedback = parent.querySelector('.feedback-box');
+    <div class="wrapper">
         
-        if (txtArea.value.trim() === "") {
-            alert("Please type an answer before locking it in.");
-            return;
+        <div id="view-auth" class="auth-card">
+            <h2 id="auth-title">Sign In</h2>
+            <p id="auth-subtitle">Access the structural psychology platform</p>
+            
+            <div class="form-group">
+                <label id="input-label-user" for="auth-user">Username</label>
+                <input type="text" id="auth-user" class="form-control" placeholder="Enter username or 'admin'">
+            </div>
+            <div class="form-group">
+                <label for="auth-pass">Password</label>
+                <input type="password" id="auth-pass" class="form-control" placeholder="••••••••">
+                <div id="auth-error" class="error-msg">Invalid Credentials</div>
+            </div>
+            
+            <button class="btn-primary" onclick="handleAuth()">Continue</button>
+            
+            <div class="auth-switch" id="auth-toggle-msg">
+                Looking for administrative access? <span onclick="toggleAuthMode(true)">Admin Login</span>
+            </div>
+        </div>
+
+        <div id="view-portal" class="container hidden">
+            <header>
+                <h1>Introductory Psychology Quiz</h1>
+                <p>Basic Concept Review & Foundations of Mental Health</p>
+            </header>
+
+            <div class="section-title">Part 1: Common Mental Health Conditions</div>
+
+            <div class="quiz-card" data-qid="1">
+                <div class="q-header">Question 1</div>
+                <p class="q-text">A person experiences a persistent low mood, loss of interest in activities they used to enjoy, constant tiredness, and changes in sleep patterns lasting for several weeks. What common mental health condition best describes this?</p>
+                <div class="input-space">
+                    <textarea placeholder="Type your response formulation here..." oninput="trackTyping(1)"></textarea>
+                    <div class="card-actions">
+                        <button class="btn-primary" style="width: auto;" onclick="lockAnswer(this, 1)">Lock In Answer</button>
+                    </div>
+                    <div class="feedback-box">
+                        <p><span class="label">Expected Answer:</span> Depression (Major Depressive Disorder).</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quiz-card" data-qid="2">
+                <div class="q-header">Question 2</div>
+                <p class="q-text">Someone experiences sudden, unexpected bursts of extreme fear accompanied by a pounding heart, sweating, and shortness of breath that peak within minutes. What are these episodes called?</p>
+                <div class="input-space">
+                    <textarea placeholder="Type your response formulation here..." oninput="trackTyping(2)"></textarea>
+                    <div class="card-actions">
+                        <button class="btn-primary" style="width: auto;" onclick="lockAnswer(this, 2)">Lock In Answer</button>
+                    </div>
+                    <div class="feedback-box">
+                        <p><span class="label">Expected Answer:</span> Panic Attacks (Panic Disorder).</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quiz-card" data-qid="3">
+                <div class="q-header">Question 3</div>
+                <p class="q-text">A person experiences extreme mood swings that cycle between periods of high energy, talking very fast, and grand plans (mania), followed by periods of deep sadness and low motivation. What condition involves these severe shifts?</p>
+                <div class="input-space">
+                    <textarea placeholder="Type your response formulation here..." oninput="trackTyping(3)"></textarea>
+                    <div class="card-actions">
+                        <button class="btn-primary" style="width: auto;" onclick="lockAnswer(this, 3)">Lock In Answer</button>
+                    </div>
+                    <div class="feedback-box">
+                        <p><span class="label">Expected Answer:</span> Bipolar Disorder.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-title">Part 2: Professional Ethics & Frameworks</div>
+
+            <div class="quiz-card" data-qid="4">
+                <div class="q-header">Question 4</div>
+                <p class="q-text">If a professional rules that they will not share or talk about a client's private stories with outside individuals or friends, what fundamental ethical concept are they following?</p>
+                <div class="input-space">
+                    <textarea placeholder="Type your response formulation here..." oninput="trackTyping(4)"></textarea>
+                    <div class="card-actions">
+                        <button class="btn-primary" style="width: auto;" onclick="lockAnswer(this, 4)">Lock In Answer</button>
+                    </div>
+                    <div class="feedback-box">
+                        <p><span class="label">Expected Answer:</span> Confidentiality.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quiz-card" data-qid="5">
+                <div class="q-header">Question 5</div>
+                <p class="q-text">What classic term describes the strong sense of trust, mutual respect, and collaborative connection built between a helper and a client that allows them to work well together?</p>
+                <div class="input-space">
+                    <textarea placeholder="Type your response formulation here..." oninput="trackTyping(5)"></textarea>
+                    <div class="card-actions">
+                        <button class="btn-primary" style="width: auto;" onclick="lockAnswer(this, 5)">Lock In Answer</button>
+                    </div>
+                    <div class="feedback-box">
+                        <p><span class="label">Expected Answer:</span> Therapeutic Alliance (or Rapport).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="view-admin" class="container hidden">
+            <header>
+                <h1>Administrative System Dashboard</h1>
+                <p>Live candidate evaluation metric tracking engine</p>
+            </header>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-title">Total Active Users</div>
+                    <div class="metric-value" id="metric-users">1</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-title">Answers Locked In</div>
+                    <div class="metric-value" id="metric-locked">0</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-title">Active Metrics Integrity</div>
+                    <div class="metric-value" style="color: var(--success);">Operational</div>
+                </div>
+            </div>
+
+            <div class="section-title">User Analytics Monitor</div>
+            <div class="admin-table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>User Context Target</th>
+                            <th>Target Question</th>
+                            <th>Status Matrix</th>
+                            <th>Live Data Field Input</th>
+                        </tr>
+                    </thead>
+                    <tbody id="admin-log-table">
+                        <tr>
+                            <td colspan="4" style="text-align: center; color: var(--text-muted);">No logs registered in system database.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Internal System State Configuration
+        let currentUser = "";
+        let isAdminMode = false;
+        let isSystemAdmin = false;
+
+        // Localized Memory State Objects (Simulated persistent layout database)
+        let trackingState = {
+            users: ["GuestUser"],
+            lockedCount: 0,
+            responses: {} // Maps user_question -> {text: "", status: ""}
+        };
+
+        function toggleAuthMode(toAdmin) {
+            isAdminMode = toAdmin;
+            const title = document.getElementById("auth-title");
+            const subtitle = document.getElementById("auth-subtitle");
+            const toggleMsg = document.getElementById("auth-toggle-msg");
+            const userGroup = document.getElementById("input-label-user").parentElement;
+            document.getElementById("auth-error").style.display = "none";
+
+            if (toAdmin) {
+                title.textContent = "System Administration Override";
+                subtitle.textContent = "Protected terminal authorization required";
+                userGroup.style.display = "none"; // Admin mode only requires password target
+                toggleMsg.innerHTML = "Standard portal access? <span onclick='toggleAuthMode(false)'>User Sign In</span>";
+            } else {
+                title.textContent = "Sign In";
+                subtitle.textContent = "Access the structural psychology platform";
+                userGroup.style.display = "block";
+                toggleMsg.innerHTML = "Looking for administrative access? <span onclick='toggleAuthMode(true)'>Admin Login</span>";
+            }
         }
 
-        txtArea.disabled = true;
-        btn.style.display = "none";
-        feedback.style.display = "block";
-    }
-</script>
+        function handleAuth() {
+            const userInput = document.getElementById("auth-user").value.trim();
+            const passInput = document.getElementById("auth-pass").value;
+            const errorElement = document.getElementById("auth-error");
 
+            errorElement.style.display = "none";
+
+            if (isAdminMode) {
+                // Strict administrative string matching checking pass: 'havoc55'
+                if (passInput === "havoc55") {
+                    isSystemAdmin = true;
+                    currentUser = "Admin_Root";
+                    document.getElementById("role-badge").textContent = "Admin System";
+                    document.getElementById("admin-panel-btn").classList.remove("hidden");
+                    renderAdminLogs();
+                    switchView("admin");
+                    showNavigation(true);
+                } else {
+                    errorElement.textContent = "Security clearance check failed: Invalid Password.";
+                    errorElement.style.display = "block";
+                }
+            } else {
+                // Normal user access login route
+                if (userInput === "") {
+                    errorElement.textContent = "Username field matrix verification parameter cannot be empty.";
+                    errorElement.style.display = "block";
+                    return;
+                }
+                if (userInput.toLowerCase() === "admin") {
+                    errorElement.textContent = "System administrative interface access routing requires admin authentication mode panel switch.";
+                    errorElement.style.display = "block";
+                    return;
+                }
+
+                currentUser = userInput;
+                if (!trackingState.users.includes(currentUser)) {
+                    trackingState.users.push(currentUser);
+                }
+                document.getElementById("role-badge").textContent = `User: ${currentUser}`;
+                document.getElementById("admin-panel-btn").classList.add("hidden");
+                
+                // Repopulate matching local configuration fields if user re-logged
+                resetQuizInterfaceForUser();
+                switchView("portal");
+                showNavigation(true);
+            }
+        }
+
+        function showNavigation(visible) {
+            const nav = document.getElementById("global-nav");
+            if (visible) nav.classList.remove("hidden");
+            else nav.classList.add("hidden");
+        }
+
+        function switchView(viewTarget) {
+            document.getElementById("view-auth").classList.add("hidden");
+            document.getElementById("view-portal").classList.add("hidden");
+            document.getElementById("view-admin").classList.add("hidden");
+            
+            document.getElementById("portal-btn").classList.add("hidden");
+            document.getElementById("admin-panel-btn").classList.add("hidden");
+
+            if (viewTarget === 'auth') {
+                document.getElementById("view-auth").classList.remove("hidden");
+            } else if (viewTarget === 'portal') {
+                document.getElementById("view-portal").classList.remove("hidden");
+                if (isSystemAdmin) {
+                    document.getElementById("admin-panel-btn").classList.remove("hidden");
+                }
+            } else if (viewTarget === 'admin') {
+                document.getElementById("view-admin").classList.remove("hidden");
+                document.getElementById("portal-btn").classList.remove("hidden");
+                renderAdminLogs();
+            }
+        }
+
+        function trackTyping(qid) {
+            if (isSystemAdmin) return; // Admins viewing the test view matrix do not overwrite records
+            const card = document.querySelector(`.quiz-card[data-qid="${qid}"]`);
+            const val = card.querySelector("textarea").value;
+            
+            const stateKey = `${currentUser}_q${qid}`;
+            if (!trackingState.responses[stateKey]) {
+                trackingState.responses[stateKey] = { text: "", status: "Drafting" };
+            }
+            trackingState.responses[stateKey].text = val;
+        }
+
+        function lockAnswer(btn, qid) {
+            const parent = btn.parentElement.parentElement;
+            const txtArea = parent.querySelector('textarea');
+            const feedback = parent.querySelector('.feedback-box');
+            
+            if (txtArea.value.trim() === "") {
+                alert("Please input structural verification data string parameters before locking execution.");
+                return;
+            }
+
+            txtArea.disabled = true;
+            btn.style.display = "none";
+            feedback.style.display = "block";
+
+            const stateKey = `${currentUser}_q${qid}`;
+            trackingState.responses[stateKey] = {
+                text: txtArea.value,
+                status: "Locked In"
+            };
+
+            updateGlobalMetrics();
+        }
+
+        function updateGlobalMetrics() {
+            let totalLocked = 0;
+            Object.keys(trackingState.responses).forEach(key => {
+                if (trackingState.responses[key].status === "Locked In") {
+                    totalLocked++;
+                }
+            });
+            trackingState.lockedCount = totalLocked;
+            document.getElementById("metric-users").textContent = trackingState.users.length;
+            document.getElementById("metric-locked").textContent = trackingState.lockedCount;
+        }
+
+        function resetQuizInterfaceForUser() {
+            // Re-render and configure initial text area fields safely
+            document.querySelectorAll(".quiz-card").forEach(card => {
+                const qid = card.getAttribute("data-qid");
+                const txt = card.querySelector("textarea");
+                const btn = card.querySelector(".btn-primary");
+                const feedback = card.querySelector(".feedback-box");
+
+                const stateKey = `${currentUser}_q${qid}`;
+                const record = trackingState.responses[stateKey];
+
+                if (record) {
+                    txt.value = record.text;
+                    if (record.status === "Locked In") {
+                        txt.disabled = true;
+                        btn.style.display = "none";
+                        feedback.style.display = "block";
+                    } else {
+                        txt.disabled = false;
+                        btn.style.display = "block";
+                        feedback.style.display = "none";
+                    }
+                } else {
+                    txt.value = "";
+                    txt.disabled = false;
+                    btn.style.display = "block";
+                    feedback.style.display = "none";
+                }
+            });
+        }
+
+        function renderAdminLogs() {
+            updateGlobalMetrics();
+            const tableBody = document.getElementById("admin-log-table");
+            tableBody.innerHTML = "";
+
+            const keys = Object.keys(trackingState.responses);
+            if (keys.length === 0) {
+                tableBody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: var(--text-muted);">No system operational interaction metrics recorded.</td></tr>`;
+                return;
+            }
+
+            keys.forEach(key => {
+                const parts = key.split("_q");
+                const user = parts[0];
+                const qNum = parts[1];
+                const data = trackingState.responses[key];
+
+                const row = document.createElement("tr");
+                
+                const userCell = document.createElement("td");
+                userCell.textContent = user;
+                userCell.style.fontWeight = "600";
+                
+                const qCell = document.createElement("td");
+                qCell.textContent = `Question ${qNum}`;
+                
+                const statusCell = document.createElement("td");
+                statusCell.textContent = data.status;
+                if (data.status === "Locked In") {
+                    statusCell.style.color = "var(--success)";
+                    statusCell.style.fontWeight = "600";
+                } else {
+                    statusCell.style.color = "var(--text-muted)";
+                }
+
+                const dataCell = document.createElement("td");
+                dataCell.textContent = data.text.length > 50 ? data.text.substring(0, 50) + "..." : data.text;
+                dataCell.style.color = "var(--text-muted)";
+
+                row.appendChild(userCell);
+                row.appendChild(qCell);
+                row.appendChild(statusCell);
+                row.appendChild(dataCell);
+
+                tableBody.appendChild(row);
+            });
+        }
+
+        function logout() {
+            currentUser = "";
+            isSystemAdmin = false;
+            isAdminMode = false;
+            
+            document.getElementById("auth-user").value = "";
+            document.getElementById("auth-pass").value = "";
+            
+            toggleAuthMode(false);
+            showNavigation(false);
+            switchView("auth");
+        }
+    </script>
 </body>
 </html>

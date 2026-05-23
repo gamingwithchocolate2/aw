@@ -294,6 +294,30 @@
             color: var(--success);
         }
 
+        /* Global Submit Bar Layout */
+        .submit-portal-bar {
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+        }
+
+        .submit-info h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .submit-info p {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
         /* Metrics / Admin Board Framework */
         .metrics-grid {
             display: grid;
@@ -438,15 +462,57 @@
                 </div>
             </div>
 
-            <div class="section-title">Part 2: Professional Ethics & Frameworks</div>
-
             <div class="quiz-card" data-qid="4">
                 <div class="q-header">Question 4</div>
-                <p class="q-text">If a professional rules that they will not share or talk about a client's private stories with outside individuals or friends, what fundamental ethical concept are they following?</p>
+                <p class="q-text">An individual feels intense, overwhelming nervousness and self-consciousness when meeting new people or speaking in public because they are terrified of being judged or embarrassed. What specific anxiety presentation is this?</p>
                 <div class="input-space">
                     <textarea placeholder="Type your response formulation here..." oninput="trackTyping(4)"></textarea>
                     <div class="card-actions">
                         <button class="btn-primary" style="width: auto;" onclick="lockAnswer(this, 4)">Lock In Answer</button>
+                    </div>
+                    <div class="feedback-box">
+                        <p><span class="label">Expected Answer:</span> Social Anxiety (Social Phobia).</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quiz-card" data-qid="5">
+                <div class="q-header">Question 5</div>
+                <p class="q-text">After experiencing a highly stressful, scary, or dangerous life event, a person struggles with frequent nightmares about the event, feels constantly on edge, and avoids anything that reminds them of it. What condition does this look like?</p>
+                <div class="input-space">
+                    <textarea placeholder="Type your response formulation here..." oninput="trackTyping(5)"></textarea>
+                    <div class="card-actions">
+                        <button class="btn-primary" style="width: auto;" onclick="lockAnswer(this, 5)">Lock In Answer</button>
+                    </div>
+                    <div class="feedback-box">
+                        <p><span class="label">Expected Answer:</span> Post-Traumatic Stress Disorder (PTSD).</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-title">Part 2: Basic Professional & Communication Skills</div>
+
+            <div class="quiz-card" data-qid="6">
+                <div class="q-header">Question 6</div>
+                <p class="q-text">When a helper listens carefully to someone without interrupting, pays attention to their feelings, and states back what they heard to show they understand, what basic communication skill are they using?</p>
+                <div class="input-space">
+                    <textarea placeholder="Type your response formulation here..." oninput="trackTyping(6)"></textarea>
+                    <div class="card-actions">
+                        <button class="btn-primary" style="width: auto;" onclick="lockAnswer(this, 6)">Lock In Answer</button>
+                    </div>
+                    <div class="feedback-box">
+                        <p><span class="label">Expected Answer:</span> Active Listening.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quiz-card" data-qid="7">
+                <div class="q-header">Question 7</div>
+                <p class="q-text">If a professional rules that they will not share or talk about a client's private stories with outside individuals or friends, what fundamental ethical concept are they following?</p>
+                <div class="input-space">
+                    <textarea placeholder="Type your response formulation here..." oninput="trackTyping(7)"></textarea>
+                    <div class="card-actions">
+                        <button class="btn-primary" style="width: auto;" onclick="lockAnswer(this, 7)">Lock In Answer</button>
                     </div>
                     <div class="feedback-box">
                         <p><span class="label">Expected Answer:</span> Confidentiality.</p>
@@ -454,18 +520,268 @@
                 </div>
             </div>
 
-            <div class="quiz-card" data-qid="5">
-                <div class="q-header">Question 5</div>
+            <div class="quiz-card" data-qid="8">
+                <div class="q-header">Question 8</div>
+                <p class="q-text">What is the professional term for setting clear, healthy limits on relationship topics, personal talk, and meeting times to keep the helper-client relationship safe and focused?</p>
+                <div class="input-space">
+                    <textarea placeholder="Type your response formulation here..." oninput="trackTyping(8)"></textarea>
+                    <div class="card-actions">
+                        <button class="btn-primary" style="width: auto;" onclick="lockAnswer(this, 8)">Lock In Answer</button>
+                    </div>
+                    <div class="feedback-box">
+                        <p><span class="label">Expected Answer:</span> Professional Boundaries.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quiz-card" data-qid="9">
+                <div class="q-header">Question 9</div>
                 <p class="q-text">What classic term describes the strong sense of trust, mutual respect, and collaborative connection built between a helper and a client that allows them to work well together?</p>
                 <div class="input-space">
-                    <textarea placeholder="Type your response formulation here..." oninput="trackTyping(5)"></textarea>
+                    <textarea placeholder="Type your response formulation here..." oninput="trackTyping(9)"></textarea>
                     <div class="card-actions">
-                        <button class="btn-primary" style="width: auto;" onclick="lockAnswer(this, 5)">Lock In Answer</button>
+                        <button class="btn-primary" style="width: auto;" onclick="lockAnswer(this, 9)">Lock In Answer</button>
                     </div>
                     <div class="feedback-box">
                         <p><span class="label">Expected Answer:</span> Therapeutic Alliance (or Rapport).</p>
                     </div>
                 </div>
+            </div>
+
+            <div class="quiz-card" data-qid="10">
+                <div class="q-header">Question 10</div>
+                <p class="q-text">During an intake interview, a client states they are planning to cause serious physical harm to an identifiable person tonight. What legal requirement forces the therapist to override standard confidentiality rules?</p>
+                <div class="input-space">
+                    <textarea placeholder="Type your response formulation here..." oninput="trackTyping(10)"></textarea>
+                    <div class="card-actions">
+                        <button class="btn-primary" style="width: auto;" onclick="lockAnswer(this, 10)">Lock In Answer</button>
+                    </div>
+                    <div class="feedback-box">
+                        <p><span class="label">Expected Answer:</span> Duty to Warn / Duty to Protect (Tarasoff ruling).</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-title">Part 3: Basic Approaches to Change</div>
+
+            <div class="quiz-card" data-qid="11">
+                <div class="q-header">Question 11</div>
+                <p class="q-text">Which popular style of talking therapy focuses directly on helping people notice how their negative thoughts influence their feelings and actions, teaching them to swap unhelpful thoughts for balanced ones?</p>
+                <div class="input-space">
+                    <textarea placeholder="Type your response formulation here..." oninput="trackTyping(11)"></textarea>
+                    <div class="card-actions">
+                        <button class="btn-primary" style="width: auto;" onclick="lockAnswer(this, 11)">Lock In Answer</button>
+                    </div>
+                    <div class="feedback-box">
+                        <p><span class="label">Expected Answer:</span> Cognitive Behavioral Therapy (CBT).</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quiz-card" data-qid="12">
+                <div class="q-header">Question 12</div>
+                <p class="q-text">When someone works through a fear (like a fear of heights) by slowly and safely facing it step-by-step under calm conditions until it no longer scares them, what basic behavioral technique is being used?</p>
+                <div class="input-space">
+                    <textarea placeholder="Type your response formulation here..." oninput="trackTyping(12)"></textarea>
+                    <div class="card-actions">
+                        <button class="btn-primary" style="width: auto;" onclick="lockAnswer(this, 12)">Lock In Answer</button>
+                    </div>
+                    <div class="feedback-box">
+                        <p><span class="label">Expected Answer:</span> Exposure Therapy (or Systematic Desensitization).</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quiz-card" data-qid="13">
+                <div class="q-header">Question 13</div>
+                <p class="q-text">What is the term for actions, habits, or strategies (such as deep breathing, journaling, or regular exercise) that a person uses to manage stress and keep themselves feeling healthy?</p>
+                <div class="input-space">
+                    <textarea placeholder="Type your response formulation here..." oninput="trackTyping(13)"></textarea>
+                    <div class="card-actions">
+                        <button class="btn-primary" style="width: auto;" onclick="lockAnswer(this, 13)">Lock In Answer</button>
+                    </div>
+                    <div class="feedback-box">
+                        <p><span class="label">Expected Answer:</span> Coping Mechanisms (or Self-Care Strategies).</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quiz-card" data-qid="14">
+                <div class="q-header">Question 14</div>
+                <p class="q-text">What is the basic psychological term for an automatic defense action where a person pushes a highly uncomfortable or stressful memory entirely out of their conscious awareness so they don't have to face it?</p>
+                <div class="input-space">
+                    <textarea placeholder="Type your response formulation here..." oninput="trackTyping(14)"></textarea>
+                    <div class="card-actions">
+                        <button class="btn-primary" style="width: auto;" onclick="lockAnswer(this, 14)">Lock In Answer</button>
+                    </div>
+                    <div class="feedback-box">
+                        <p><span class="label">Expected Answer:</span> Repression.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quiz-card" data-qid="15">
+                <div class="q-header">Question 15</div>
+                <p class="q-text">A client redirects anger caused by their supervisor at work onto their completely innocent family dog when they get home. What defense mechanism is this client demonstrating?</p>
+                <div class="input-space">
+                    <textarea placeholder="Type your response formulation here..." oninput="trackTyping(15)"></textarea>
+                    <div class="card-actions">
+                        <button class="btn-primary" style="width: auto;" onclick="lockAnswer(this, 15)">Lock In Answer</button>
+                    </div>
+                    <div class="feedback-box">
+                        <p><span class="label">Expected Answer:</span> Displacement.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-title">Part 4: Extended Conceptual Analysis</div>
+
+            <div class="quiz-card" data-qid="16">
+                <div class="q-header">Question 16</div>
+                <p class="q-text">What term describes the psychological phenomenon where an individual forms an incorrect perception that two completely unrelated variables, events, or behaviors are tightly linked together?</p>
+                <div class="input-space">
+                    <textarea placeholder="Type your response formulation here..." oninput="trackTyping(16)"></textarea>
+                    <div class="card-actions">
+                        <button class="btn-primary" style="width: auto;" onclick="lockAnswer(this, 16)">Lock In Answer</button>
+                    </div>
+                    <div class="feedback-box">
+                        <p><span class="label">Expected Answer:</span> Illusory Correlation.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quiz-card" data-qid="17">
+                <div class="q-header">Question 17</div>
+                <p class="q-text">In classical conditioning experiments, what term is used for the fading and eventual disappearance of a learned, conditioned response when the conditioned stimulus is repeatedly presented completely alone without the unconditioned stimulus?</p>
+                <div class="input-space">
+                    <textarea placeholder="Type your response formulation here..." oninput="trackTyping(17)"></textarea>
+                    <div class="card-actions">
+                        <button class="btn-primary" style="width: auto;" onclick="lockAnswer(this, 17)">Lock In Answer</button>
+                    </div>
+                    <div class="feedback-box">
+                        <p><span class="label">Expected Answer:</span> Extinction.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quiz-card" data-qid="18">
+                <div class="q-header">Question 18</div>
+                <p class="q-text">Which specific structure within the human brain's limbic system functions as the core control center for processing primary emotional reactions, specifically processing intense fear and survival instincts?</p>
+                <div class="input-space">
+                    <textarea placeholder="Type your response formulation here..." oninput="trackTyping(18)"></textarea>
+                    <div class="card-actions">
+                        <button class="btn-primary" style="width: auto;" onclick="lockAnswer(this, 18)">Lock In Answer</button>
+                    </div>
+                    <div class="feedback-box">
+                        <p><span class="label">Expected Answer:</span> Amygdala.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quiz-card" data-qid="19">
+                <div class="q-header">Question 19</div>
+                <p class="q-text">What specific cognitive bias describes a person's strong, internal tendency to look for, favor, and remember information that matches their pre-existing beliefs while ignoring conflicting facts?</p>
+                <div class="input-space">
+                    <textarea placeholder="Type your response formulation here..." oninput="trackTyping(19)"></textarea>
+                    <div class="card-actions">
+                        <button class="btn-primary" style="width: auto;" onclick="lockAnswer(this, 19)">Lock In Answer</button>
+                    </div>
+                    <div class="feedback-box">
+                        <p><span class="label">Expected Answer:</span> Confirmation Bias.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quiz-card" data-qid="20">
+                <div class="q-header">Question 20</div>
+                <p class="q-text">In psychological research methodology, what is the specific term for a fake, inactive substance or treatment given to a control group to isolate the true active effects of an experimental drug?</p>
+                <div class="input-space">
+                    <textarea placeholder="Type your response formulation here..." oninput="trackTyping(20)"></textarea>
+                    <div class="card-actions">
+                        <button class="btn-primary" style="width: auto;" onclick="lockAnswer(this, 20)">Lock In Answer</button>
+                    </div>
+                    <div class="feedback-box">
+                        <p><span class="label">Expected Answer:</span> Placebo.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quiz-card" data-qid="21">
+                <div class="q-header">Question 21</div>
+                <p class="q-text">What basic psychological term describes the state of mental discomfort or tension that occurs when a person holds two contradictory beliefs, values, or ideas at the exact same time?</p>
+                <div class="input-space">
+                    <textarea placeholder="Type your response formulation here..." oninput="trackTyping(21)"></textarea>
+                    <div class="card-actions">
+                        <button class="btn-primary" style="width: auto;" onclick="lockAnswer(this, 21)">Lock In Answer</button>
+                    </div>
+                    <div class="feedback-box">
+                        <p><span class="label">Expected Answer:</span> Cognitive Dissonance.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quiz-card" data-qid="22">
+                <div class="q-header">Question 22</div>
+                <p class="q-text">In developmental psychology, what milestone concept refers to a child understanding that physical items continue to exist out in the world even when they are completely hidden from sight?</p>
+                <div class="input-space">
+                    <textarea placeholder="Type your response formulation here..." oninput="trackTyping(22)"></textarea>
+                    <div class="card-actions">
+                        <button class="btn-primary" style="width: auto;" onclick="lockAnswer(this, 22)">Lock In Answer</button>
+                    </div>
+                    <div class="feedback-box">
+                        <p><span class="label">Expected Answer:</span> Object Permanence.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quiz-card" data-qid="23">
+                <div class="q-header">Question 23</div>
+                <p class="q-text">What specific diagnostic reference framework manual is published by the American Psychiatric Association and serves as the primary standardized guide for identifying mental health disorders?</p>
+                <div class="input-space">
+                    <textarea placeholder="Type your response formulation here..." oninput="trackTyping(23)"></textarea>
+                    <div class="card-actions">
+                        <button class="btn-primary" style="width: auto;" onclick="lockAnswer(this, 23)">Lock In Answer</button>
+                    </div>
+                    <div class="feedback-box">
+                        <p><span class="label">Expected Answer:</span> DSM (Diagnostic and Statistical Manual of Mental Disorders).</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quiz-card" data-qid="24">
+                <div class="q-header">Question 24</div>
+                <p class="q-text">What specific social psychological process explains why individuals put in significantly less personal effort when working on a task as part of a large group compared to when they work completely alone?</p>
+                <div class="input-space">
+                    <textarea placeholder="Type your response formulation here..." oninput="trackTyping(24)"></textarea>
+                    <div class="card-actions">
+                        <button class="btn-primary" style="width: auto;" onclick="lockAnswer(this, 24)">Lock In Answer</button>
+                    </div>
+                    <div class="feedback-box">
+                        <p><span class="label">Expected Answer:</span> Social Loafing.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quiz-card" data-qid="25">
+                <div class="q-header">Question 25</div>
+                <p class="q-text">What foundational concept, introduced by Abraham Maslow, sits at the very peak of his hierarchy and represents a human being's ultimate drive to achieve their full individual potential?</p>
+                <div class="input-space">
+                    <textarea placeholder="Type your response formulation here..." oninput="trackTyping(25)"></textarea>
+                    <div class="card-actions">
+                        <button class="btn-primary" style="width: auto;" onclick="lockAnswer(this, 25)">Lock In Answer</button>
+                    </div>
+                    <div class="feedback-box">
+                        <p><span class="label">Expected Answer:</span> Self-Actualization.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="submit-portal-bar" id="portal-submission-wrapper">
+                <div class="submit-info">
+                    <h3>Final Assessment Submission</h3>
+                    <p>Transmit all drafted and locked response matrices directly to the administrative panel logs.</p>
+                </div>
+                <button class="btn-primary" style="width: auto; padding: 0.75rem 2rem;" onclick="submitEntireQuiz()">Submit Test Answers</button>
             </div>
         </div>
 
@@ -485,8 +801,8 @@
                     <div class="metric-value" id="metric-locked">0</div>
                 </div>
                 <div class="metric-card">
-                    <div class="metric-title">Active Metrics Integrity</div>
-                    <div class="metric-value" style="color: var(--success);">Operational</div>
+                    <div class="metric-title">Total Submitted Tests</div>
+                    <div class="metric-value" id="metric-submitted" style="color: var(--primary);">0</div>
                 </div>
             </div>
 
@@ -518,10 +834,11 @@
         let isAdminMode = false;
         let isSystemAdmin = false;
 
-        // Localized Memory State Objects (Simulated persistent layout database)
+        // Localized Memory State Objects
         let trackingState = {
             users: ["GuestUser"],
             lockedCount: 0,
+            submittedCount: 0,
             responses: {} // Maps user_question -> {text: "", status: ""}
         };
 
@@ -536,7 +853,7 @@
             if (toAdmin) {
                 title.textContent = "System Administration Override";
                 subtitle.textContent = "Protected terminal authorization required";
-                userGroup.style.display = "none"; // Admin mode only requires password target
+                userGroup.style.display = "none";
                 toggleMsg.innerHTML = "Standard portal access? <span onclick='toggleAuthMode(false)'>User Sign In</span>";
             } else {
                 title.textContent = "Sign In";
@@ -554,7 +871,7 @@
             errorElement.style.display = "none";
 
             if (isAdminMode) {
-                // Strict administrative string matching checking pass: 'havoc55'
+                // Administrative check key matching parameter: 'havoc55'
                 if (passInput === "havoc55") {
                     isSystemAdmin = true;
                     currentUser = "Admin_Root";
@@ -568,7 +885,6 @@
                     errorElement.style.display = "block";
                 }
             } else {
-                // Normal user access login route
                 if (userInput === "") {
                     errorElement.textContent = "Username field matrix verification parameter cannot be empty.";
                     errorElement.style.display = "block";
@@ -587,7 +903,6 @@
                 document.getElementById("role-badge").textContent = `User: ${currentUser}`;
                 document.getElementById("admin-panel-btn").classList.add("hidden");
                 
-                // Repopulate matching local configuration fields if user re-logged
                 resetQuizInterfaceForUser();
                 switchView("portal");
                 showNavigation(true);
@@ -623,11 +938,15 @@
         }
 
         function trackTyping(qid) {
-            if (isSystemAdmin) return; // Admins viewing the test view matrix do not overwrite records
+            if (isSystemAdmin) return;
             const card = document.querySelector(`.quiz-card[data-qid="${qid}"]`);
             const val = card.querySelector("textarea").value;
             
             const stateKey = `${currentUser}_q${qid}`;
+            if (trackingState.responses[stateKey] && trackingState.responses[stateKey].status === "Submitted") {
+                return; // Protection layer if field is globally submitted
+            }
+
             if (!trackingState.responses[stateKey]) {
                 trackingState.responses[stateKey] = { text: "", status: "Drafting" };
             }
@@ -657,20 +976,76 @@
             updateGlobalMetrics();
         }
 
+        function submitEntireQuiz() {
+            // Check if any answers have been drafted/saved for current user context
+            let activeQuestions = 0;
+            let currentQuestionsCount = document.querySelectorAll(".quiz-card").length;
+
+            for (let i = 1; i <= currentQuestionsCount; i++) {
+                const stateKey = `${currentUser}_q${i}`;
+                const record = trackingState.responses[stateKey];
+                
+                // If a user leaves text fields in "Drafting" view, auto-lock and escalate to secure field status
+                if (record && record.text.trim() !== "") {
+                    if (record.status !== "Submitted") {
+                        record.status = "Submitted";
+                    }
+                    activeQuestions++;
+                } else {
+                    // Instantiated empty matrix response if left totally blank at submit action phase
+                    trackingState.responses[stateKey] = {
+                        text: "[No response provided by candidate field execution]",
+                        status: "Submitted"
+                    };
+                }
+            }
+
+            // Lock structural visual interface completely for validation
+            document.querySelectorAll(".quiz-card").forEach(card => {
+                card.querySelector("textarea").disabled = true;
+                const btn = card.querySelector(".btn-primary");
+                if (btn) btn.style.display = "none";
+            });
+
+            // Hide the submission action component card interface cleanly
+            document.getElementById("portal-submission-wrapper").innerHTML = `
+                <div class="submit-info" style="width: 100%; text-align: center;">
+                    <h3 style="color: var(--success);">✓ Assessment Transmission Successful</h3>
+                    <p>Your responses have been hardcoded onto the central admin metrics registry layout view module.</p>
+                </div>
+            `;
+
+            trackingState.submittedCount++;
+            updateGlobalMetrics();
+            alert("Your answers have been permanently locked and submitted to the administrator panel registry!");
+        }
+
         function updateGlobalMetrics() {
             let totalLocked = 0;
             Object.keys(trackingState.responses).forEach(key => {
-                if (trackingState.responses[key].status === "Locked In") {
+                const stat = trackingState.responses[key].status;
+                if (stat === "Locked In" || stat === "Submitted") {
                     totalLocked++;
                 }
             });
             trackingState.lockedCount = totalLocked;
             document.getElementById("metric-users").textContent = trackingState.users.length;
             document.getElementById("metric-locked").textContent = trackingState.lockedCount;
+            document.getElementById("metric-submitted").textContent = trackingState.submittedCount;
         }
 
         function resetQuizInterfaceForUser() {
-            // Re-render and configure initial text area fields safely
+            let isUserSubmitted = false;
+            
+            // First pass scan check matching array targets for structural status configurations
+            document.querySelectorAll(".quiz-card").forEach(card => {
+                const qid = card.getAttribute("data-qid");
+                const stateKey = `${currentUser}_q${qid}`;
+                if (trackingState.responses[stateKey] && trackingState.responses[stateKey].status === "Submitted") {
+                    isUserSubmitted = true;
+                }
+            });
+
             document.querySelectorAll(".quiz-card").forEach(card => {
                 const qid = card.getAttribute("data-qid");
                 const txt = card.querySelector("textarea");
@@ -682,22 +1057,40 @@
 
                 if (record) {
                     txt.value = record.text;
-                    if (record.status === "Locked In") {
+                    if (record.status === "Locked In" || record.status === "Submitted") {
                         txt.disabled = true;
-                        btn.style.display = "none";
+                        if (btn) btn.style.display = "none";
                         feedback.style.display = "block";
                     } else {
                         txt.disabled = false;
-                        btn.style.display = "block";
+                        if (btn) btn.style.display = "block";
                         feedback.style.display = "none";
                     }
                 } else {
                     txt.value = "";
                     txt.disabled = false;
-                    btn.style.display = "block";
+                    if (btn) btn.style.display = "block";
                     feedback.style.display = "none";
                 }
             });
+
+            const submitWrapper = document.getElementById("portal-submission-wrapper");
+            if (isUserSubmitted) {
+                submitWrapper.innerHTML = `
+                    <div class="submit-info" style="width: 100%; text-align: center;">
+                        <h3 style="color: var(--success);">✓ Assessment Transmission Successful</h3>
+                        <p>Your responses have been hardcoded onto the central admin metrics registry layout view module.</p>
+                    </div>
+                `;
+            } else {
+                submitWrapper.innerHTML = `
+                    <div class="submit-info">
+                        <h3>Final Assessment Submission</h3>
+                        <p>Transmit all drafted and locked response matrices directly to the administrative panel logs.</p>
+                    </div>
+                    <button class="btn-primary" style="width: auto; padding: 0.75rem 2rem;" onclick="submitEntireQuiz()">Submit Test Answers</button>
+                `;
+            }
         }
 
         function renderAdminLogs() {
@@ -728,7 +1121,10 @@
                 
                 const statusCell = document.createElement("td");
                 statusCell.textContent = data.status;
-                if (data.status === "Locked In") {
+                if (data.status === "Submitted") {
+                    statusCell.style.color = "var(--primary)";
+                    statusCell.style.fontWeight = "700";
+                } else if (data.status === "Locked In") {
                     statusCell.style.color = "var(--success)";
                     statusCell.style.fontWeight = "600";
                 } else {
